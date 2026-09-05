@@ -68,10 +68,8 @@ function renderCards(rows) {
         const colors = r && r.c && r.c[2] ? r.c[2].v : "";
         const price = r && r.c && r.c[3] ? r.c[3].v : "";
         const date = r && r.c && r.c[4] ? r.c[4].v : "";
-        let img = r && r.c && r.c[5] ? r.c[5].v : "";
+        const img = r && r.c && r.c[5] ? r.c[5].v : "";
         const extra = r && r.c && r.c[6] ? r.c[6].v : "";
-
-        img = "images/friends/" + img;
 
         const nome = `${dim === "Medio" ? "" : dim} ${type} ${colors}`.trim();
         const nomeFinale = nome !== "" ? nome : ("Amigurumi " + (index + 1));
