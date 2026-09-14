@@ -84,18 +84,16 @@ function renderCards(rows) {
         const imgWrapper = document.createElement('div');
         imgWrapper.className = 'card-image';
 
-        if (img) {
-            const image = document.createElement('img');
-            image.src = escapeAttr(img);
-            image.alt = nomeFinale;
-            imgWrapper.appendChild(image);
-        } else {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'card-image-placeholder';
-            placeholder.textContent = 'No image';
-            imgWrapper.appendChild(placeholder);
-        }
+        const image = document.createElement('img');
+        image.src = escapeAttr(img);
+        image.alt = nomeFinale;
 
+        // Se l'immagine non esiste → usa quella di default
+        image.onerror = () => {
+            image.src = "images/logoCLF.png";
+        };
+
+        imgWrapper.appendChild(image);
         card.appendChild(imgWrapper);
 
         // CONTENUTO

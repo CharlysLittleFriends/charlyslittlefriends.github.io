@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logoCLF.png" type="image/png">
+
+    <title>Disiscrizione - Charly's Little Friends</title>
+</head>
+<body>
+
+    <main>
+
+        <section class="contact-form unsubscribe-form">
+            <h1>Disiscriviti dalla Newsletter</h1>
+            <p>
+                Mi dispiace che tu voglia andare via 💜
+                Spero di averti regalato comunque un sorriso, per non ricevere più mail basta inserire la tua mail e confermare.
+                Se vuoi, puoi lasciarmi un messaggio per capire cosa migliorare.
+            </p>
+
+            <div class="unsubscribe-image">
+                <img src="images/uniscribe.png" alt="Immagine disiscrizione kawaii">
+            </div>
+
+
+            <form id="unsubscribe-form" action="https://api.web3forms.com/submit" method="POST">
+
+                <!-- Web3Forms -->
+                <input type="hidden" name="access_key" value="4eb5973e-d503-4db7-99be-55571dda5953">
+
+                <!-- Oggetto email -->
+                <input type="hidden" name="subject" value="Richiesta disiscrizione newsletter">
+
+                <!-- Messaggio preimpostato -->
+                <input type="hidden" id="auto-message" name="message">
+
+                <div class="form-group">
+                    <label for="email">La tua email</label>
+                    <input type="email" id="email" name="email" required placeholder="Inserisci la tua email">
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Motivazione (facoltativa)</label>
+                    <textarea id="reason" rows="5" placeholder="Se vuoi, puoi dirmi perché..."></textarea>
+                </div>
+
+                <button type="submit" class="unsubscribe-btn">Disiscriviti</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/common.js"></script>
+
+    <script>
+        // Prepara il messaggio finale prima dell'invio
+        document.getElementById("unsubscribe-form").addEventListener("submit", function (e) {
+            const email = document.getElementById("email").value.trim();
+            const reason = document.getElementById("reason").value.trim();
+
+            const finalMessage =
+                `MAIL ${email} HA CHIESTO CANCELLAZIONE, motivazioni: ${reason || "Nessuna motivazione fornita"}`;
+
+            document.getElementById("auto-message").value = finalMessage;
+        });
+    </script>
+    <script src="js/formUniscribeValidation.js"></script>
+
+</body>
+</html>

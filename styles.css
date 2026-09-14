@@ -21,7 +21,6 @@ header {
     header .logo img {
         width: 60px; /* più grande */
         height: 60px; /* più grande */
-        border-radius: 30px;
         object-fit: cover; /* ritaglia i bordi */
         border-radius: 18px; /* quasi tondo, ma non perfettamente */
         display: block;
@@ -84,7 +83,6 @@ header {
             outline: 3px solid rgba(255, 123, 189, 0.6);
             outline-offset: 3px;
             border: 2px solid #ffffff;
-            border-radius: 10px;
             transform: translateY(-2px);
         }
 
@@ -225,7 +223,7 @@ main p {
 /* ---------------------------------------------------*/
 .footer {
     background: #c7a0ff; /* viola tenue */
-    padding: 30px;
+    padding: 18px 0;
     border-radius: 18px;
     box-shadow: 0 4px 14px rgba(155, 77, 122, 0.25);
     display: flex;
@@ -233,8 +231,9 @@ main p {
     justify-content: space-around;
     align-items: flex-start;
     gap: 40px;
-    margin-top: 60px;
-    color: #ffffff;
+    margin-top: 40px;
+    color: var(--muted);
+    text-align: center;
 }
 
     /* LINK BASE */
@@ -242,6 +241,7 @@ main p {
         color: #fff7fb;
         font-weight: 600;
         text-decoration: underline;
+        text-decoration-color: #ffffff;
         position: relative;
         transition: color 0.25s ease, transform 0.15s ease;
     }
@@ -534,20 +534,6 @@ img.small {
     border-radius: 8px;
     border: 1px solid var(--border);
 }
-
-/* Footer (minimal override only if needed) */
-footer {
-    text-align: center;
-    padding: 18px 0;
-    color: var(--muted);
-    margin-top: 40px;
-}
-
-.footer a {
-    text-decoration: underline;
-    text-decoration-color: #ffffff;
-}
-
 
 /* Responsive tweaks (home-specific) */
 @media (max-width: 600px) {
@@ -1009,10 +995,6 @@ footer {
 /* ---------------  AMICO DETTAGLIO  -----------------*/
 /* ---------------------------------------------------*/
 
-.summary-title {
-
-}
-
 /* CONTENITORE CAROUSEL */
 .detail-carousel {
     position: relative;
@@ -1115,3 +1097,23 @@ footer {
     font-weight: 700; /* grassetto */
     text-decoration: underline; /* sottolineato */
 }
+
+/* ---------------------------------------------------*/
+/* ---------------     UNISCRIBE    ------------------*/
+/* ---------------------------------------------------*/
+
+.unsubscribe-image {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+    .unsubscribe-image img {
+        width: 100%; /* si adatta al contenitore */
+        max-width: 1000px; /* limite massimo, puoi aumentare o diminuire */
+        height: auto; /* mantiene le proporzioni */
+        border-radius: 18px;
+        padding: 10px;
+        background: linear-gradient(135deg, #ffd6f5, #e3c7ff);
+        box-shadow: 0 0 12px rgba(180, 120, 255, 0.4);
+    }
+

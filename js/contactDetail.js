@@ -90,7 +90,7 @@ export async function initItemSummary() {
 
     // --- HTML della card ---
     summaryText.innerHTML = `
-        <h2 class="summary-title">${nome}</h2>
+        <h2>${nome}</h2>
 
         ${images.length > 0 ? `
             <div class="detail-carousel">
