@@ -11,14 +11,6 @@ async function loadComponent(id, file) {
     }
 }
 
-// Carica head comune (Google Analytics, favicon, CSS, ecc.)
-fetch("components/head-common.html")
-    .then(res => res.text())
-    .then(html => {
-        document.head.insertAdjacentHTML("beforeend", html);
-    })
-    .catch(err => console.error("Errore nel caricamento di head-common.html", err));
-
 // Carica componenti visivi
 loadComponent("header", "components/header.html");
 loadComponent("footer", "components/footer.html");
