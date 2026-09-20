@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charlyslittlefriends.github.io/sitemap.xml
