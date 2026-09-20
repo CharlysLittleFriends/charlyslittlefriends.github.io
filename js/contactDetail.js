@@ -90,7 +90,14 @@ export async function initItemSummary() {
 
     // --- HTML della card ---
     summaryText.innerHTML = `
-        <h2>${nome}</h2>
+    <div style="text-align:center;">
+        <h2 style="
+            display: inline;
+            color: #ff4fa3;
+        ">
+            <em>${nome}</em>
+        </h2>
+    </div>
 
         ${images.length > 0 ? `
             <div class="detail-carousel">
