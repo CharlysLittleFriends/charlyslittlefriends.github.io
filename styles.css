@@ -169,11 +169,15 @@ main {
 }
 
 
-main h1 {
-    margin: 0 0 8px;
-    font-size: 1.6rem;
-    color: #5a2ca0; /* viola */
-}
+    main h1 {
+        margin: 0 0 8px;
+        font-size: 1.6rem;
+        color: #5a2ca0; /* viola */
+        text-align: center;
+        /* bordo bianco attorno alle lettere */
+        text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+    }
+
 
 main h2 {
     color: #000; /* nero */
@@ -185,6 +189,16 @@ main h2 {
 main p {
     margin: 6px 0 18px;
     color: #000; /* nero */
+}
+
+.lista-fiori {
+    list-style-type: "🌸 ";
+    padding-left: 24px;
+}
+
+.lista-cuoricino {
+    list-style-type: "💜 ";
+    padding-left: 24px;
 }
 
 @media (max-width: 600px) {
