@@ -44,13 +44,16 @@ export function initFilters(allRows, renderCards) {
 
         select.innerHTML = `<option value="">${labelAll}</option>`;
 
-        values.forEach(v => {
-            if (!v) return;
-            const opt = document.createElement("option");
-            opt.value = v;
-            opt.textContent = v;
-            select.appendChild(opt);
-        });
+        [...values]
+            .sort((a, b) => a.localeCompare(b, "it"))
+            .forEach(v => {
+                if (!v) return;
+
+                const opt = document.createElement("option");
+                opt.value = v;
+                opt.textContent = v;
+                select.appendChild(opt);
+            });
 
         if ([...values].includes(current)) {
             select.value = current;

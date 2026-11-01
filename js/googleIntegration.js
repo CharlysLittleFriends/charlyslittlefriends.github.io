@@ -73,8 +73,8 @@ function renderCards(rows) {
 
         img = "images/friends/" + img;
 
-        const nome = `${dim === "Medio" ? "" : dim} ${type} ${colors}`.trim();
-        const nomeFinale = nome !== "" ? nome : ("Amigurumi " + (index + 1));
+        const nome = `${dim === "Medio" || dim === "Media" ? "" : dim} ${type} ${colors}`.trim();
+        const nomeFinale = `${nome !== "" ? nome : ("Amigurumi " + (index + 1))}`.trim();
 
         const card = document.createElement('article');
         card.className = 'friend-card';
