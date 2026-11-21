@@ -1,5 +1,4 @@
 export function initFilters(allRows, renderCards) {
-
     const fType = document.getElementById("filter-type");
     const fDim = document.getElementById("filter-dim");
     const fCol = document.getElementById("filter-colors");
@@ -14,25 +13,66 @@ export function initFilters(allRows, renderCards) {
             const dim = r?.c?.[1]?.v ?? "";
             const col = r?.c?.[2]?.v ?? "";
 
-            return (!typeVal || type === typeVal) &&
+            return (
+                (!typeVal || type === typeVal) &&
                 (!dimVal || dim === dimVal) &&
-                (!colVal || col === colVal);
+                (!colVal || col === colVal)
+            );
         });
 
-        updateFilterOptions(filtered);
+        updateFilterOptions();
         renderCards(filtered);
     }
 
-    function updateFilterOptions(rows) {
-        const types = new Set();
-        const dims = new Set();
-        const cols = new Set();
+    function updateFilterOptions() {
+        const typeVal = fType.value;
+        const dimVal = fDim.value;
+        const colVal = fCol.value;
 
-        rows.forEach(r => {
-            types.add(r?.c?.[0]?.v ?? "");
-            dims.add(r?.c?.[1]?.v ?? "");
-            cols.add(r?.c?.[2]?.v ?? "");
+        // TYPE -> ignora TYPE
+        const rowsForTypes = allRows.filter(r => {
+            const dim = r?.c?.[1]?.v ?? "";
+            const col = r?.c?.[2]?.v ?? "";
+
+            return (
+                (!dimVal || dim === dimVal) &&
+                (!colVal || col === colVal)
+            );
         });
+
+        // DIM -> ignora DIM
+        const rowsForDims = allRows.filter(r => {
+            const type = r?.c?.[0]?.v ?? "";
+            const col = r?.c?.[2]?.v ?? "";
+
+            return (
+                (!typeVal || type === typeVal) &&
+                (!colVal || col === colVal)
+            );
+        });
+
+        // COLORI -> ignora COLORI
+        const rowsForCols = allRows.filter(r => {
+            const type = r?.c?.[0]?.v ?? "";
+            const dim = r?.c?.[1]?.v ?? "";
+
+            return (
+                (!typeVal || type === typeVal) &&
+                (!dimVal || dim === dimVal)
+            );
+        });
+
+        const types = new Set(
+            rowsForTypes.map(r => r?.c?.[0]?.v ?? "")
+        );
+
+        const dims = new Set(
+            rowsForDims.map(r => r?.c?.[1]?.v ?? "")
+        );
+
+        const cols = new Set(
+            rowsForCols.map(r => r?.c?.[2]?.v ?? "")
+        );
 
         refillSelect(fType, types, "Tutti");
         refillSelect(fDim, dims, "Tutte");
@@ -45,17 +85,16 @@ export function initFilters(allRows, renderCards) {
         select.innerHTML = `<option value="">${labelAll}</option>`;
 
         [...values]
+            .filter(Boolean)
             .sort((a, b) => a.localeCompare(b, "it"))
             .forEach(v => {
-                if (!v) return;
-
                 const opt = document.createElement("option");
                 opt.value = v;
                 opt.textContent = v;
                 select.appendChild(opt);
             });
 
-        if ([...values].includes(current)) {
+        if (current && [...values].includes(current)) {
             select.value = current;
         }
     }
@@ -64,5 +103,6 @@ export function initFilters(allRows, renderCards) {
     fDim.addEventListener("change", applyFilters);
     fCol.addEventListener("change", applyFilters);
 
+    updateFilterOptions();
     applyFilters();
 }
